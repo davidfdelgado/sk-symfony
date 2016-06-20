@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopBewertungslinks" table="SHOP_Bewertungslinks">
+    <indexes>
+      <index name="bwl_nr" columns="bwl_nr"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="bwl_nr_2" columns="bwl_nr"/>
+    </unique-constraints>
+    <id name="bwlNr" association-key="true"/>
+    <field name="bwlStatus" type="boolean" column="bwl_status" nullable="false"/>
+    <one-to-one field="bwlNr" target-entity="ShopBestellungen" fetch="LAZY">
+      <join-columns>
+        <join-column name="bwl_nr" referenced-column-name="nr"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

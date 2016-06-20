@@ -1,0 +1,17 @@
+homepage:
+  path: /
+  defaults: {_controller: AppBundle:Default:index}
+
+vorgaenge:
+  path: /vorgaenge/
+  defaults: {_controller: AppBundle:Vorgaenge:index}
+vorgaenge_angebote:
+  path: /vorgaenge/angebote/
+  defaults: {_controller: AppBundle:Vorgaenge:indexAngebote}
+vorgaenge_anfragen:
+  path: /vorgaenge/anfragen/
+  defaults: {_controller: AppBundle:Vorgaenge:indexAnfragen}
+vorgaenge_rechnungen:
+  path: /vorgaenge/rechnungen/
+  defaults: {_controller: AppBundle:Vorgaenge:indexRechnungen}
+  

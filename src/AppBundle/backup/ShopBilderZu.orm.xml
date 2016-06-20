@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopBilderZu" table="SHOP_Bilder_Zu">
+    <indexes>
+      <index name="Kategorie" columns="bz_bi_id"/>
+      <index name="bz_ak_id" columns="bz_ak_id"/>
+    </indexes>
+    <id name="bzId" type="integer" column="bz_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="bzBezeichnung" type="string" column="bz_bezeichnung" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bzTitle" type="string" column="bz_title" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bzTyp" type="integer" column="bz_typ" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="bzAk" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="bz_ak_id" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="bzBi" target-entity="ShopBilder" fetch="LAZY">
+      <join-columns>
+        <join-column name="bz_bi_id" referenced-column-name="bi_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

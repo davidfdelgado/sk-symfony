@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelKategorie" table="ARTIKEL_Kategorie">
+    <indexes>
+      <index name="a_k_art" columns="a_k_art"/>
+      <index name="a_k_anbieter_id" columns="a_k_anbieter_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="Artikelkurz" columns="a_k_oid,a_k_name_kurz"/>
+    </unique-constraints>
+    <id name="aKId" type="integer" column="a_k_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="aKAktiv" type="boolean" column="a_k_aktiv" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="aKOid" type="integer" column="a_k_oid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aKAnsicht" type="boolean" column="a_k_ansicht" nullable="false">
+      <options>
+        <option name="comment">Für die Ticketübersicht im Backend Bereich, ob getrennt oder zusammengefasst!</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="aKDruck" type="integer" column="a_k_druck" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">0 = Drucken, 1 = auf mobile, 2 = geht separat raus</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="aKAnbieter" type="string" column="a_k_anbieter" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKAnbieterId" type="integer" column="a_k_anbieter_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aKKonto" type="integer" column="a_k_konto" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aKName" type="string" column="a_k_name" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKNameEn" type="string" column="a_k_name_en" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKNameKurz" type="string" column="a_k_name_kurz" length="12" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKSort" type="integer" column="a_k_sort" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aKUeberschrift" type="string" column="a_k_ueberschrift" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKUeberschriftEn" type="string" column="a_k_ueberschrift_en" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKBeschreibung" type="string" column="a_k_beschreibung" length="2048" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKBeschreibungEn" type="string" column="a_k_beschreibung_en" length="2048" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aKTime" type="boolean" column="a_k_time" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="aKDauer" type="time" column="a_k_dauer" nullable="false"/>
+    <field name="aKVoucher" type="boolean" column="a_k_voucher" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="aKVertrieb" type="boolean" column="a_k_vertrieb" nullable="false">
+      <options>
+        <option name="comment">Ob es auf der Vertriebsseite angezeigt werden soll</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="aKPositionDarst" type="boolean" column="a_k_position_darst" nullable="false">
+      <options>
+        <option name="comment">Wie positionen dargestellt werden... (p /P)</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="aKAbrechnung" type="integer" column="a_k_abrechnung" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Definiert über was das Produkt abgerechnet wird, SK oder HCT</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="aKVtext" type="integer" column="a_k_vtext" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aKRtext" type="integer" column="a_k_rtext" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aKMwst" type="integer" column="a_k_mwst" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">19</option>
+      </options>
+    </field>
+    <many-to-one field="aKArt" target-entity="ArtikelKategorieArt" fetch="LAZY">
+      <join-columns>
+        <join-column name="a_k_art" referenced-column-name="a_a_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

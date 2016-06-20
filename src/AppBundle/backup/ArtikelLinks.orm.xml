@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelLinks" table="ARTIKEL_Links">
+    <unique-constraints>
+      <unique-constraint name="l_links" columns="l_links"/>
+    </unique-constraints>
+    <id name="lId" type="integer" column="l_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="lArt" type="boolean" column="l_art" nullable="false"/>
+    <field name="lKid" type="integer" column="l_kid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="lLinks" type="string" column="l_links" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lLanguage" type="string" column="l_language" length="6" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

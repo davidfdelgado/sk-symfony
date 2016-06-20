@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AgenturChatBetreff" table="AGENTUR_Chat_Betreff">
+    <indexes>
+      <index name="ab_uid" columns="ab_from"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ab_typ" columns="ab_typ,ab_betreff,ab_from,ab_to"/>
+    </unique-constraints>
+    <id name="abId" type="integer" column="ab_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="abTyp" type="boolean" column="ab_typ" nullable="false">
+      <options>
+        <option name="comment">ob es vom vertriebspartner stammt oder nicht </option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="abCreated" type="datetime" column="ab_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="abBetreff" type="string" column="ab_betreff" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="abFrom" type="integer" column="ab_from" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="abTo" type="integer" column="ab_to" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

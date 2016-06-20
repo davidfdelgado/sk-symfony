@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopGsFunktion" table="SHOP_GS_Funktion">
+    <indexes>
+      <index name="gs_f_zu_kat" columns="gs_f_zu_kat"/>
+      <index name="gs_f_zu_ort" columns="gs_f_zu_ort"/>
+      <index name="gs_f_leistung" columns="gs_f_leistung"/>
+    </indexes>
+    <id name="gsFId" type="integer" column="gs_f_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="gsFStatus" type="boolean" column="gs_f_status" nullable="false"/>
+    <field name="gsFGueltigBis" type="datetime" column="gs_f_gueltig_bis" nullable="false"/>
+    <field name="gsFWt" type="integer" column="gs_f_wt" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Wochentage</option>
+      </options>
+    </field>
+    <field name="gsFBeschreibung" type="string" column="gs_f_beschreibung" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">öffentliche Beschreibung</option>
+      </options>
+    </field>
+    <field name="gsFBeschreibungIntern" type="string" column="gs_f_beschreibung_intern" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="gsFEuro" type="decimal" column="gs_f_euro" precision="7" scale="2" nullable="false"/>
+    <field name="gsFProz" type="integer" column="gs_f_proz" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="gsFLeistung" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="gs_f_leistung" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="gsFZuKat" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="gs_f_zu_kat" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="gsFZuOrt" target-entity="ArtikelOrte" fetch="LAZY">
+      <join-columns>
+        <join-column name="gs_f_zu_ort" referenced-column-name="a_o_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

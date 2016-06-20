@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AgenturUser" table="AGENTUR_User">
+    <id name="auId" type="integer" column="au_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="auArt" type="boolean" column="au_art" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="auTyp" type="boolean" column="au_typ" nullable="false">
+      <options>
+        <option name="comment">für interne mitarbeiter zu welcher kategorie er gehört</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="auBn" type="string" column="au_bn" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="auPw" type="string" column="au_pw" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="auLastlogin" type="datetime" column="au_lastlogin" nullable="true"/>
+    <field name="auVorname" type="string" column="au_vorname" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="auNachname" type="string" column="au_nachname" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="auVid" type="integer" column="au_vid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="auCreated" type="datetime" column="au_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="auStatus" type="boolean" column="au_status" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="auEmail" type="string" column="au_email" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="auTelefon" type="string" column="au_telefon" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="auScanAll" type="boolean" column="au_scan_all" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

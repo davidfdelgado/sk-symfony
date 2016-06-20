@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelOrte" table="ARTIKEL_Orte">
+    <unique-constraints>
+      <unique-constraint name="a_o_name_kurz" columns="a_o_name_kurz"/>
+    </unique-constraints>
+    <id name="aOId" type="integer" column="a_o_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="aOName" type="string" column="a_o_name" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aONameKurz" type="string" column="a_o_name_kurz" length="12" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aOCreated" type="datetime" column="a_o_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="aOCreatedU" type="integer" column="a_o_created_u" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aOUpdate" type="datetime" column="a_o_update" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="aOUpdateU" type="integer" column="a_o_update_u" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

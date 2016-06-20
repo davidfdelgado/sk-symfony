@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopPassbook" table="SHOP_Passbook">
+    <id name="paId" type="integer" column="pa_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="paCity" type="string" column="pa_city" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paName" type="string" column="pa_name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paPassType" type="string" column="pa_pass_type" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paTimeTrue" type="boolean" column="pa_time_true" nullable="false"/>
+    <field name="paTime" type="time" column="pa_time" nullable="false"/>
+    <field name="paOrganizationName" type="string" column="pa_organization_name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paDescription" type="string" column="pa_description" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paCategory" type="string" column="pa_category" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

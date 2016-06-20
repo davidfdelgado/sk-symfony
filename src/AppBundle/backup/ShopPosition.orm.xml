@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopPosition" table="SHOP_Position">
+    <indexes>
+      <index name="p_bid" columns="p_bid"/>
+      <index name="p_bid_2" columns="p_bid"/>
+    </indexes>
+    <id name="pId" type="integer" column="p_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pTid" type="string" column="p_tid" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pAnzahl" type="integer" column="p_anzahl" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pPreis" type="decimal" column="p_preis" precision="7" scale="2" nullable="false"/>
+    <field name="pMwst" type="integer" column="p_mwst" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pBezeichnung" type="string" column="p_bezeichnung" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pBezeichnungEn" type="string" column="p_bezeichnung_en" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pVtext" type="integer" column="p_vtext" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pRtext" type="integer" column="p_rtext" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pPaId" type="integer" column="p_pa_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pAdatum" type="string" column="p_adatum" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pDatum" type="datetime" column="p_datum" nullable="true"/>
+    <field name="pCheckin" type="datetime" column="p_checkin" nullable="false"/>
+    <many-to-one field="pBid" target-entity="ShopBestellungen" fetch="LAZY">
+      <join-columns>
+        <join-column name="p_bid" referenced-column-name="nr"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

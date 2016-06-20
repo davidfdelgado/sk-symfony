@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelAbZeiten" table="ARTIKEL_AB_Zeiten">
+    <indexes>
+      <index name="a_ab_ak_id" columns="a_ab_kid"/>
+      <index name="a_ab_kid" columns="a_ab_kid"/>
+    </indexes>
+    <id name="aAbId" type="integer" column="a_ab_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="aAbTyp" type="boolean" column="a_ab_typ" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="aAbDatum" type="datetime" column="a_ab_datum" nullable="false"/>
+    <field name="aAbInterval" type="time" column="a_ab_interval" nullable="false">
+      <options>
+        <option name="comment">interval in Minuten</option>
+        <option name="default">00:00:15</option>
+      </options>
+    </field>
+    <field name="aAbIntStart" type="time" column="a_ab_int_start" nullable="false">
+      <options>
+        <option name="comment">start des intervales</option>
+      </options>
+    </field>
+    <field name="aAbIntEnde" type="time" column="a_ab_int_ende" nullable="false">
+      <options>
+        <option name="comment">Ende des Intervales</option>
+      </options>
+    </field>
+    <field name="aAbInfo" type="string" column="a_ab_info" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aAbStatus" type="boolean" column="a_ab_status" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="aAbKid" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="a_ab_kid" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

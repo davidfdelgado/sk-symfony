@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelKombi" table="ARTIKEL_Kombi">
+    <unique-constraints>
+      <unique-constraint name="duplicates" columns="ak_oid,ak_kid"/>
+    </unique-constraints>
+    <id name="akId" type="integer" column="ak_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="akOid" type="integer" column="ak_oid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Key zum Ort</option>
+      </options>
+    </field>
+    <field name="akKid" type="integer" column="ak_kid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Key zur Kategorie</option>
+      </options>
+    </field>
+    <field name="akRabatt" type="decimal" column="ak_rabatt" precision="7" scale="2" nullable="false">
+      <options>
+        <option name="comment">Höhe des Rabattes</option>
+      </options>
+    </field>
+    <field name="akMin" type="decimal" column="ak_min" precision="7" scale="2" nullable="false">
+      <options>
+        <option name="comment">Nur für Tickets die MIN kosten</option>
+      </options>
+    </field>
+    <field name="akMax" type="decimal" column="ak_max" precision="7" scale="2" nullable="false">
+      <options>
+        <option name="comment">Nur für Tickets die MAX kosten</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

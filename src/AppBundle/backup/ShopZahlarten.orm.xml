@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopZahlarten" table="SHOP_Zahlarten">
+    <id name="zahlartenid" type="integer" column="zahlartenid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="art" type="string" column="art" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="beschreibung" type="text" column="beschreibung" length="16777215" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="artKosten" type="string" column="art_kosten" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="datum" type="date" column="datum" nullable="false"/>
+  </entity>
+</doctrine-mapping>

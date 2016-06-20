@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AgenturVertrieb" table="AGENTUR_Vertrieb">
+    <id name="avId" type="integer" column="av_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="avArt" type="boolean" column="av_art" nullable="true">
+      <options>
+        <option name="comment">1 agenturhotelbuero, 2 partner, 3 beides</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="avStatus" type="boolean" column="av_status" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="avKid" type="integer" column="av_kid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="avHotelname" type="string" column="av_hotelname" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="avAnsprechpartner" type="string" column="av_ansprechpartner" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="avEmail" type="string" column="av_email" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="avZahlungsziel" type="boolean" column="av_zahlungsziel" nullable="false">
+      <options>
+        <option name="default">14</option>
+      </options>
+    </field>
+    <field name="avCheckinEmail" type="boolean" column="av_checkin_email" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="avAflStatus" type="boolean" column="av_afl_status" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="avAflId" type="string" column="av_afl_id" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="avCreated" type="datetime" column="av_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="avStempel" type="boolean" column="av_stempel" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

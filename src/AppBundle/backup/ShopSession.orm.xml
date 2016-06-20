@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopSession" table="SHOP_Session">
+    <unique-constraints>
+      <unique-constraint name="w_id" columns="w_id"/>
+      <unique-constraint name="id" columns="id"/>
+    </unique-constraints>
+    <id name="wId" type="integer" column="w_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="id" type="string" column="id" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sSession" type="string" column="s_session" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sKid" type="integer" column="s_kid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sLang" type="string" column="s_lang" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sRnnr" type="string" column="s_rnnr" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sDate" type="datetime" column="s_date" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="sRdatum" type="date" column="s_rdatum" nullable="false"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopScans" table="SHOP_Scans">
+    <indexes>
+      <index name="sc_p_id" columns="sc_b_nr"/>
+      <index name="sc_au_id" columns="sc_au_id"/>
+      <index name="sc_k_id" columns="sc_k_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="sc_b_nr" columns="sc_b_nr,sc_k_id"/>
+    </unique-constraints>
+    <id name="scId" type="integer" column="sc_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="scAnzahl" type="integer" column="sc_anzahl" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="scScanned" type="datetime" column="sc_scanned" nullable="true">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <many-to-one field="scK" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="sc_k_id" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="scBNr" target-entity="ShopBestellungen" fetch="LAZY">
+      <join-columns>
+        <join-column name="sc_b_nr" referenced-column-name="nr"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="scAu" target-entity="AgenturUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="sc_au_id" referenced-column-name="au_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
