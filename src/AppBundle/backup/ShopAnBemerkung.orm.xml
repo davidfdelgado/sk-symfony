@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopAnBemerkung" table="SHOP_AN_Bemerkung">
+    <indexes>
+      <index name="o_bid" columns="o_bid"/>
+    </indexes>
+    <id name="oId" type="integer" column="o_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="oArt" type="boolean" column="o_art" nullable="false"/>
+    <field name="oText" type="text" column="o_text" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="oBid" target-entity="ShopBestellungen" fetch="LAZY">
+      <join-columns>
+        <join-column name="o_bid" referenced-column-name="nr"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelGooglePositionen" table="ARTIKEL_Google_Positionen">
+    <indexes>
+      <index name="gm_k_id" columns="gm_k_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="gm_id" columns="gm_id"/>
+    </unique-constraints>
+    <id name="gmId" type="integer" column="gm_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="gmType" type="boolean" column="gm_type" nullable="false"/>
+    <field name="gmStatus" type="boolean" column="gm_status" nullable="false"/>
+    <field name="gmBeschreibung" type="string" column="gm_beschreibung" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="gmLongitude" type="decimal" column="gm_longitude" precision="18" scale="12" nullable="false"/>
+    <field name="gmLatitude" type="decimal" column="gm_latitude" precision="18" scale="12" nullable="false"/>
+    <many-to-one field="gmK" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="gm_k_id" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

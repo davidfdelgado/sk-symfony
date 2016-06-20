@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelKategorieBewertungen" table="ARTIKEL_Kategorie_Bewertungen">
+    <indexes>
+      <index name="bw_kid" columns="bw_kid"/>
+      <index name="bw_user" columns="bw_user"/>
+      <index name="bw_bid" columns="bw_bid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="bw_bid_2" columns="bw_bid,bw_kid"/>
+    </unique-constraints>
+    <id name="bwId" type="integer" column="bw_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="bwStatus" type="boolean" column="bw_status" nullable="false">
+      <options>
+        <option name="comment">0 = inaktiv, 1 = aktiv </option>
+      </options>
+    </field>
+    <field name="bwSterne" type="integer" column="bw_sterne" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bwCreated" type="datetime" column="bw_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="bwBewertungName" type="string" column="bw_bewertung_name" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bwBewertungText" type="string" column="bw_bewertung_text" length="1024" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="bwBid" target-entity="ShopBestellungen" fetch="LAZY">
+      <join-columns>
+        <join-column name="bw_bid" referenced-column-name="nr"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="bwUser" target-entity="AgenturUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="bw_user" referenced-column-name="au_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="bwKid" target-entity="ArtikelKategorie" fetch="LAZY">
+      <join-columns>
+        <join-column name="bw_kid" referenced-column-name="a_k_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

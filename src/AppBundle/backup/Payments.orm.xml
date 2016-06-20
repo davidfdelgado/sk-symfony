@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Payments" table="payments">
+    <indexes>
+      <index name="payment_status" columns="payment_status"/>
+      <index name="itemid" columns="itemid"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="paytype" type="boolean" column="paytype" nullable="false">
+      <options>
+        <option name="comment">0 = Gutschrift, 1 Vorkasse; 2 Paypal; 3 Sofort; 4 hotel; 5 barclay; 6 barclay; 99 gutschein;</option>
+      </options>
+    </field>
+    <field name="rnfeallig" type="date" column="rnfeallig" nullable="false"/>
+    <field name="txnid" type="string" column="txnid" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="buyeremail" type="string" column="buyeremail" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paymentMethod" type="string" column="payment_method" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="paymentAmount" type="decimal" column="payment_amount" precision="7" scale="2" nullable="false"/>
+    <field name="paymentStatus" type="string" column="payment_status" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="itemid" type="string" column="itemid" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdtime" type="datetime" column="createdtime" nullable="false"/>
+  </entity>
+</doctrine-mapping>

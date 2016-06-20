@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AgenturLogin" table="AGENTUR_Login">
+    <indexes>
+      <index name="ag_id" columns="ag_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ag_session" columns="ag_session"/>
+    </unique-constraints>
+    <id name="agNr" type="integer" column="ag_nr">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="agSession" type="string" column="ag_session" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="agIp" type="text" column="ag_ip" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="agExpire" type="datetime" column="ag_expire" nullable="false"/>
+    <field name="agCreated" type="datetime" column="ag_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="agType" type="boolean" column="ag_type" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="ag" target-entity="AgenturUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="ag_id" referenced-column-name="au_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

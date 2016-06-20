@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopMitteilungen" table="SHOP_Mitteilungen">
+    <indexes>
+      <index name="m_bid" columns="m_bid"/>
+      <index name="m_art" columns="m_art"/>
+    </indexes>
+    <id name="mId" type="integer" column="m_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="mBid" type="integer" column="m_bid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mCreated" type="datetime" column="m_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="mValue" type="text" column="m_value" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mArt" type="boolean" column="m_art" nullable="false">
+      <options>
+        <option name="comment">0 = Kundenkommenter, 1 = Backendkommenter, 2 = Kategoriekommentar</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

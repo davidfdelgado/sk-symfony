@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopKunde" table="SHOP_Kunde">
+    <id name="kId" type="integer" column="k_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="kAnrede" type="string" column="k_anrede" length="6" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kVorname" type="string" column="k_vorname" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kNachname" type="string" column="k_nachname" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kTelefonnummer" type="string" column="k_telefonnummer" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kEmail" type="string" column="k_email" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kStrasse" type="string" column="k_strasse" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kFirma" type="string" column="k_firma" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kStadt" type="string" column="k_stadt" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kPlz" type="string" column="k_plz" length="6" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kAdatum" type="datetime" column="k_adatum" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="kEdatum" type="datetime" column="k_edatum" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="kNewsletter" type="integer" column="k_newsletter" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="kRueckruf" type="integer" column="k_rueckruf" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="kBewertungLink" type="boolean" column="k_bewertung_link" nullable="false">
+      <options>
+        <option name="comment">soll er keinen bewertungslink kriegen ? 0 er bekommen 1 er bekommt keinen</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="kChannel" type="string" column="k_channel" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">über welchen Kanal der Kunde akquiriert wurde</option>
+      </options>
+    </field>
+    <field name="kVid" type="integer" column="k_vid" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Vertriebsid (SHOP_Vertrieb)</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

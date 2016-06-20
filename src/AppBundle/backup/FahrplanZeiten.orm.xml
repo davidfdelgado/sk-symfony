@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\FahrplanZeiten" table="FAHRPLAN_Zeiten">
+    <indexes>
+      <index name="fp_z_hid" columns="fp_z_hid"/>
+      <index name="fp_z_bid" columns="fp_z_bid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="Zeit" columns="fp_z_wt,fp_z_bid,fp_z_hid,fp_z_runde"/>
+    </unique-constraints>
+    <id name="fpZId" type="integer" column="fp_z_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fpZTyp" type="integer" column="fp_z_typ" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fpZWt" type="integer" column="fp_z_wt" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fpZRunde" type="integer" column="fp_z_runde" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fpZTime" type="time" column="fp_z_time" nullable="false"/>
+    <field name="fpZStatus" type="integer" column="fp_z_status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="fpZBid" target-entity="FahrplanBus" fetch="LAZY">
+      <join-columns>
+        <join-column name="fp_z_bid" referenced-column-name="fp_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fpZHid" target-entity="FahrplanHaltestellen" fetch="LAZY">
+      <join-columns>
+        <join-column name="fp_z_hid" referenced-column-name="fp_h_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

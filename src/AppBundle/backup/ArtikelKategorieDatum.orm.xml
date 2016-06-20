@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ArtikelKategorieDatum" table="ARTIKEL_Kategorie_Datum">
+    <id name="adId" type="integer" column="ad_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="adKId" type="integer" column="ad_k_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="adDate" type="date" column="ad_date" nullable="false"/>
+    <field name="adType" type="integer" column="ad_type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

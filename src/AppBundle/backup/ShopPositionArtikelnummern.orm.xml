@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopPositionArtikelnummern" table="SHOP_Position_Artikelnummern">
+    <unique-constraints>
+      <unique-constraint name="pk_artikelnummer" columns="pk_artikelnummer"/>
+    </unique-constraints>
+    <id name="pkId" type="integer" column="pk_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pkArtikelnummer" type="string" column="pk_artikelnummer" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pkKategorie" type="integer" column="pk_kategorie" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pkXaId" type="integer" column="pk_xa_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Verknüpfung mit den Kostenarten</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

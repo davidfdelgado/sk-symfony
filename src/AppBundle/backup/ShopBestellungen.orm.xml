@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ShopBestellungen" table="SHOP_Bestellungen">
+    <indexes>
+      <index name="b_art" columns="b_art"/>
+      <index name="b_summe" columns="b_summe"/>
+      <index name="b_booked" columns="b_booked"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="b_rnnr" columns="b_rnnr"/>
+    </unique-constraints>
+    <id name="nr" type="integer" column="nr">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="bKid" type="integer" column="b_kid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bBnr" type="integer" column="b_bnr" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Referenz auf andere bnr</option>
+      </options>
+    </field>
+    <field name="bLang" type="string" column="b_lang" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bFirma" type="string" column="b_firma" length="3" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bRnnr" type="string" column="b_rnnr" length="32" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bRef" type="string" column="b_ref" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Referenz fuer Hotels</option>
+      </options>
+    </field>
+    <field name="bArt" type="boolean" column="b_art" nullable="true">
+      <options>
+        <option name="comment">Anfrage 1, Angebot 2, Rechnung 3, Abgeborchen &gt;= 98</option>
+      </options>
+    </field>
+    <field name="bVid" type="integer" column="b_vid" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Sagt ob es ein Vertriebsvorgang ist</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bDatum" type="date" column="b_datum" nullable="false"/>
+    <field name="bSumme" type="decimal" column="b_summe" precision="7" scale="2" nullable="true"/>
+    <field name="bBezahlart" type="integer" column="b_bezahlart" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">1 Vorkasse, 2 Paypal, 3 Sofort, 4 Hotel, 5 ELV, 6 Kredit</option>
+      </options>
+    </field>
+    <field name="bBezahlt" type="boolean" column="b_bezahlt" nullable="true">
+      <options>
+        <option name="comment">0= offen, 1 = bezahlt, 2 = Gutschrift</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bBhinweis" type="integer" column="b_bhinweis" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bEsent" type="boolean" column="b_esent" nullable="false"/>
+    <field name="bUser" type="integer" column="b_user" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="bCreated" type="datetime" column="b_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="bBooked" type="datetime" column="b_booked" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="bPayed" type="datetime" column="b_payed" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="bFrist" type="datetime" column="b_frist" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="bFristStatus" type="boolean" column="b_frist_status" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bOview" type="integer" column="b_oview" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="bCalc" type="boolean" column="b_calc" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

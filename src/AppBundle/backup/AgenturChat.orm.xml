@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AgenturChat" table="AGENTUR_Chat">
+    <indexes>
+      <index name="ac_bid" columns="ac_bid"/>
+      <index name="IDX_FECC6DAF1CD0C3AD" columns="ac_from"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ac_from" columns="ac_from,ac_to,ac_message"/>
+    </unique-constraints>
+    <id name="acId" type="integer" column="ac_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="acTyp" type="integer" column="ac_typ" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="acStatus" type="integer" column="ac_status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="acTo" type="integer" column="ac_to" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="acMessage" type="string" column="ac_message" length="512" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="acCreated" type="datetime" column="ac_created" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <many-to-one field="acBid" target-entity="AgenturChatBetreff" fetch="LAZY">
+      <join-columns>
+        <join-column name="ac_bid" referenced-column-name="ab_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="acFrom" target-entity="AgenturUser" fetch="LAZY">
+      <join-columns>
+        <join-column name="ac_from" referenced-column-name="au_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

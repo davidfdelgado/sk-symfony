@@ -1,0 +1,6 @@
+avanzu:
+    resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
+security:
+    resource: "@AvanzuAdminThemeBundle/Resources/config/security.yml"
+AppBunmdle:
+    resource: "@AppBundle/Routing/sk_routes.yml"
